@@ -18,7 +18,7 @@ echo '\n正在启动Clash服务...'
 Text5="服务启动成功！"
 Text6="服务启动失败！"
 
-nohup $Server_Dir/bin/clash-linux-amd64 -d $Conf_Dir &>$Log_Dir/clash.log &
+nohup $Server_Dir/bin/clash-linux-amd64 -d $Conf_Dir &>>$Log_Dir/clash.log &
 if [ $? -eq 0 ]
 then
     echo "服务启动成功！"
@@ -43,12 +43,8 @@ function proxy_off(){
 	unset no_proxy
 	echo -e "\033[31m[×] 已关闭代理\033[0m"
 }
-function proxy_test() {
-
-}
 EOF
 
-echo "请执行以下命令加载环境变量: source /etc/profile.d/clash.sh\n"
-echo "请执行以下命令开启系统代理: proxy_on\n"
-echo "若要临时关闭系统代理，请执行: proxy_off\n"
-echo "若要测试代理，请执行: proxy_test\n"
+echo "请执行以下命令加载环境变量: source /etc/profile.d/clash.sh"
+echo "请执行以下命令开启系统代理: proxy_on"
+echo "若要临时关闭系统代理，请执行: proxy_off"

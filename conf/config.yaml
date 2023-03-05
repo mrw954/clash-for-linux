@@ -1,10 +1,11 @@
-port: 7890
-socks-port: 7891
+mixed-port: 7890
+ipv6: false
 allow-lan: true
 mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
+  - {name: 距离下次重置剩余：25 天, server: 1.1.1.1, port: 65535, type: vmess, uuid: a0991a35-4636-469e-ae91-7373ac4f5f87, alterId: 0, cipher: auto, tls: false}
   - {name: 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group, server: 1.1.1.1, port: 65535, type: vmess, uuid: a0991a35-4636-469e-ae91-7373ac4f5f87, alterId: 0, cipher: auto, tls: false}
   - {name: 🇸🇬 *不能用时请更新订阅, server: 1.1.1.1, port: 65535, type: vmess, uuid: a0991a35-4636-469e-ae91-7373ac4f5f87, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /}}
   - {name: "*严禁测速，为了保证所有人的宽带公平", server: 1.1.1.1, port: 65535, type: vmess, uuid: a0991a35-4636-469e-ae91-7373ac4f5f87, alterId: 0, cipher: auto, tls: false, network: ws, ws-opts: {path: /, headers: {Host: d37xr2wb5cxle7.cloudfront.net}}}
@@ -49,6 +50,7 @@ proxy-groups:
     proxies:
       - ♻️ 自动选择
       - DIRECT
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -93,6 +95,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -137,6 +140,7 @@ proxy-groups:
       - 🚀 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -180,6 +184,7 @@ proxy-groups:
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -223,6 +228,7 @@ proxy-groups:
     proxies:
       - 🎯 全球直连
       - 🚀 节点选择
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -266,6 +272,7 @@ proxy-groups:
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -310,6 +317,7 @@ proxy-groups:
       - 🚀 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
@@ -370,6 +378,7 @@ proxy-groups:
       - 🚀 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
+      - 距离下次重置剩余：25 天
       - 国内入口：大机场.cc 固定入口：大机场.com  电报：BigAirport_Group
       - 🇸🇬 *不能用时请更新订阅
       - "*严禁测速，为了保证所有人的宽带公平"
