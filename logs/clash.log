@@ -114,3 +114,4 @@ time="2023-03-06T02:38:26+08:00" level=info msg="[TCP] 127.0.0.1:52340 --> codel
 time="2023-03-06T02:38:26+08:00" level=info msg="[TCP] 127.0.0.1:52358 --> codeload.github.com:443 match DomainKeyword(github) using 🚀 节点选择[🇭🇰 【直连】香港 - 1]"
 time="2023-03-06T02:42:14+08:00" level=info msg="[TCP] 127.0.0.1:56278 --> github.com:443 match DomainKeyword(github) using 🚀 节点选择[🇭🇰 【直连】香港 - 1]"
 time="2023-03-06T02:42:27+08:00" level=info msg="[TCP] 127.0.0.1:43784 --> github.com:443 match DomainKeyword(github) using 🚀 节点选择[🇭🇰 【直连】香港 - 1]"
+time="2023-03-06T02:46:56+08:00" level=info msg="[TCP] 127.0.0.1:54402 --> github.com:443 match DomainKeyword(github) using 🚀 节点选择[🇭🇰 【直连】香港 - 3]"
