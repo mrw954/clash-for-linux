@@ -7,41 +7,17 @@ Server_Dir=$(
 Conf_Dir="$Server_Dir/conf"
 Log_Dir="$Server_Dir/logs"
 # hostip=$(hostname -I | awk '{print $1}')
-hostip=127.0.0.1
-port=7890
-PROXY_HTTP="http://${hostip}:${port}"
-
-start_clash() {
-	# 启动Clash服务
-	nohup "$Server_Dir"/bin/clash-linux-amd64 -d "$Conf_Dir" &>>"$Log_Dir"/clash.log &
-	if test $? -eq 0; then
-		echo "Clash 服务启动成功！"
-	else
-		echo "Clash 服务启动失败！"
-	fi
-}
 
 set_proxy() {
-	export http_proxy=${PROXY_HTTP}
-	export HTTP_PROXY=${PROXY_HTTP}
-	export https_proxy=${PROXY_HTTP}
-	export HTTPS_proxy=${PROXY_HTTP}
-	export ALL_PROXY=${PROXY_SOCKS5}
-	export all_proxy=${PROXY_SOCKS5}
-	git config --global http.https://github.com.proxy ${PROXY_HTTP}
-	git config --global https.https://github.com.proxy ${PROXY_HTTP}
+	export http_proxy=http://127.0.0.1:7890
+	export https_proxy=http://127.0.0.1:7890
+	export no_proxy=127.0.0.1,localhost
 }
 
 unset_proxy() {
 	unset http_proxy
-	unset HTTP_PROXY
 	unset https_proxy
-	unset HTTPS_PROXY
-	unset ALL_PROXY
-	unset all_proxy
-	git config --global --unset http.https://github.com.proxy
-	git config --global --unset https.https://github.com.proxy
-
+	unset no_proxy
 }
 
 test_setting() {
@@ -54,14 +30,32 @@ test_setting() {
 	fi
 }
 
+start_clash() {
+	# 重复性检测
+	PID_NUM=$(ps -ef | grep [c]lash-linux-a | wc -l)
+	PID=$(ps -ef | grep [c]lash-linux-a | awk '{print $2}')
+	if [ "$PID_NUM" -ne 0 ]; then
+		echo "Clash 服务已启动！"
+	else
+		# 启动Clash服务
+		nohup "$Server_Dir"/bin/clash-linux-amd64 -d "$Conf_Dir" &>>"$Log_Dir"/clash.log &
+		if test $? -eq 0; then
+			echo "Clash 服务启动成功！"
+		else
+			echo "Clash 服务启动失败！"
+		fi
+	fi
+}
+
 exit_clash() {
 	PID_NUM=$(ps -ef | grep [c]lash-linux-a | wc -l)
 	PID=$(ps -ef | grep [c]lash-linux-a | awk '{print $2}')
 	if [ "$PID_NUM" -ne 0 ]; then
 		kill -9 "$PID"
-		echo -e "clash服务关闭成功\n"
+		echo -e "clash服务关闭成功 $PID\n"
 	fi
 }
+
 help() {
 	printf "proxy on\n"
 	printf "proxy off\n"
@@ -76,8 +70,6 @@ elif [ "$1" = "off" ]; then
 elif [ "$1" = "on" ]; then
 	start_clash
 	set_proxy
-    sleep 1
-	test_setting
 else
 	echo "Unsupported arguments."
 fi
